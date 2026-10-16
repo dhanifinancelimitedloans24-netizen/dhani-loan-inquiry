@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Submit a loan enquiry online.">
+<title>Dhani Finance | Loan Enquiry</title>
+<style>
+:root{--red:#c91f2c;--dark:#182235;--muted:#667085;--line:#e5e7eb;--bg:#f5f7fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--dark)}
+header{background:#fff;border-bottom:1px solid var(--line);padding:17px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:800;font-size:23px;color:var(--red)}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.5px;margin-top:4px}
+header a{color:var(--dark);text-decoration:none;font-weight:700;font-size:14px}
+.hero{background:linear-gradient(120deg,#182235,#303e57);color:#fff;padding:48px 5% 65px}.hero-inner{max-width:1100px;margin:auto}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 12px;max-width:650px}.hero p{line-height:1.7;color:#e0e6ef;max-width:650px;margin:0}
+.wrap{max-width:1100px;margin:-30px auto 50px;padding:0 18px;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px;box-shadow:0 12px 35px #1720330d}
+.card h2{margin:0 0 6px;font-size:22px}.sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px}.field.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+input,select{width:100%;border:1px solid #d0d5dd;border-radius:9px;padding:12px;font-size:15px;background:#fff;color:var(--dark)}
+input:focus,select:focus{outline:2px solid #f5b4ba;border-color:var(--red)}
+button{border:0;border-radius:9px;padding:14px 18px;font-size:15px;font-weight:700;cursor:pointer}
+.primary{width:100%;background:var(--red);color:#fff}.primary:disabled{opacity:.65}
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}
+.features{display:grid;gap:13px;margin-top:18px}.feature{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:12px}.icon{width:35px;height:35px;border-radius:10px;background:#fff0f1;color:var(--red);display:grid;place-items:center;font-weight:800;flex-shrink:0}.feature b{display:block;margin-bottom:4px}.feature span{color:var(--muted);font-size:13px;line-height:1.5}
+#result{display:none;padding:14px;border-radius:10px;margin-top:14px;line-height:1.6;overflow-wrap:anywhere}footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+@media(max-width:760px){.wrap{grid-template-columns:1fr;margin-top:-35px}.hero{padding-bottom:60px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}header{padding:15px 18px}}
+</style></head>
+<body>
+<header><div class="brand">Dhani Finance<small>LOAN ENQUIRY PORTAL</small></div><a href="/admin">Admin Login ↗</a></header>
+<section class="hero"><div class="hero-inner"><h1>Let’s explore your loan options.</h1><p>Share a few basic details and submit an enquiry. Our team can review your request and contact you using the details you provide.</p></div></section>
+<main class="wrap">
+<section class="card"><h2>Loan Enquiry Form</h2><p class="sub">Fields marked * are required. Submitting this form is an enquiry only, not a loan approval.</p>
+<form id="enquiryForm"><div class="grid">
+<div class="field"><label for="name">Full Name *</label><input id="name" name="name" required maxlength="100" autocomplete="name" placeholder="Enter your full name"></div>
+<div class="field"><label for="mobile">Mobile Number *</label><input id="mobile" name="mobile" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="tel-national" placeholder="10-digit mobile number"></div>
+<div class="field full"><label for="email">Email Address (optional)</label><input id="email" name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com"></div>
+<div class="field"><label for="loanType">Loan Type *</label><select id="loanType" name="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Education Loan</option><option>Other</option></select></div>
+<div class="field"><label for="amount">Required Loan Amount (₹) *</label><input id="amount" name="amount" type="number" min="1000" max="100000000" step="1000" required placeholder="e.g. 100000"></div>
+<div class="field"><label for="employment">Employment Type</label><select id="employment" name="employment"><option value="">Select (optional)</option><option>Salaried</option><option>Self-Employed</option><option>Business Owner</option><option>Other</option></select></div>
+<div class="field"><label for="income">Monthly Income (₹)</label><input id="income" name="income" type="number" min="0" max="100000000" placeholder="Optional"></div>
+<div class="field"><label for="city">City</label><input id="city" name="city" maxlength="80" autocomplete="address-level2" placeholder="Your city"></div>
+<div class="field"><label for="state">State</label><input id="state" name="state" maxlength="80" autocomplete="address-level1" placeholder="Your state"></div>
+</div><button class="primary" id="submitBtn" type="submit">Submit Loan Enquiry</button><div id="result" role="status" aria-live="polite"></div>
+<p class="note">By submitting, you agree that the information may be used to respond to this enquiry. Do not enter Aadhaar, PAN, bank passwords, OTPs or other sensitive credentials in this form.</p></form></section>
+<aside class="card"><h2>Simple. Online. Convenient.</h2><p class="sub">Submit your enquiry in a few steps.</p><div class="features">
+<div class="feature"><div class="icon">01</div><div><b>Share basic details</b><span>Tell us your contact details and the loan type and amount you are considering.</span></div></div>
+<div class="feature"><div class="icon">02</div><div><b>Enquiry reference</b><span>After submission, you will receive a reference number for your enquiry.</span></div></div>
+<div class="feature"><div class="icon">03</div><div><b>Review and follow-up</b><span>Any eligibility, terms, charges or approval must be confirmed through the relevant authorised lender.</span></div></div>
+</div><p class="note">This website form is for collecting enquiries. It does not guarantee approval, interest rates, or disbursal. Confirm the website operator and lender identity before sharing further information or paying any fee.</p></aside>
+</main><footer>© <span id="year"></span> Dhani Finance Loan Enquiry Portal · Privacy-conscious enquiry form</footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const form=document.getElementById("enquiryForm"), result=document.getElementById("result"), btn=document.getElementById("submitBtn");
+form.addEventListener("submit",async e=>{e.preventDefault();result.style.display="block";result.style.background="#f2f4f7";result.style.color="#344054";result.textContent="Submitting enquiry…";btn.disabled=true;
+try{const data=Object.fromEntries(new FormData(form).entries());const r=await fetch("/api/enquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const out=await r.json();if(!r.ok)throw new Error(out.error||"Could not submit enquiry.");result.style.background=out.message.includes("not configured")?"#fff4e5":"#ecfdf3";result.style.color=out.message.includes("not configured")?"#93370d":"#027a48";result.innerHTML="<strong>"+(out.message.includes("not configured")?"Enquiry saved":"Enquiry submitted")+"</strong><br>"+out.message+"<br>Reference: <strong>"+String(out.reference).replace(/[&<>"]/g,"")+"</strong>";if(r.ok)form.reset();}
+catch(err){result.style.background="#fef3f2";result.style.color="#b42318";result.textContent=err.message;}finally{btn.disabled=false;}
+});
+</script></body></html>
