@@ -8,7 +8,35 @@ const path = require("path");
 const crypto = require("crypto");
 path.join(__dirname, "public", "index.html")
 path.join(__dirname, "index.html")
+const express = require("express");
+const path = require("path");
 
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Main website
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Admin page
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "admin.html"));
+});
+
+// Health check
+app.get("/health", (req, res) => {
+  res.status(200).send("Dhani Finance server is running");
+});
+
+// Start server
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Dhani Finance enquiry app listening on ${PORT}`);
+});
 
 const app = express();
 const PORT = process.env.PORT || 3000;
