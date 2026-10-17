@@ -6,6 +6,9 @@ const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+path.join(__dirname, "public", "index.html")
+path.join(__dirname, "index.html")
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
